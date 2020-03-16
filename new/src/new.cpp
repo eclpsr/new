@@ -19,18 +19,13 @@ int main() {
 
 					break;
 
-				case sf::Event::Resized:
-					std::cout << event.size.width << " : " << event.size.height << std::endl;
+				case sf::Event::TextEntered:
+					std::cout << "text has been entered" << std::endl;
 
-					break;
-
-				case sf::Event::LostFocus:
-					std::cout << "Lost Focus" << std::endl;
-
-					break;
-
-				case sf::Event::GainedFocus:
-					std::cout << "Gained focus" << std::endl;
+					if ( event.text.unicode == 65 ) // A
+					{
+						std::cout << "Captial A has been clicked" << std::endl;
+					}
 
 					break;
 				}
