@@ -19,17 +19,13 @@ int main() {
 
 					break;
 
-				case sf::Event::TextEntered:
-					std::cout << "text has been entered" << std::endl;
-
-					if ( event.text.unicode == 65 ) // A
-					{
-						std::cout << "Captial A has been clicked" << std::endl;
-					}
-
-					break;
 				}
 			}
+
+		if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space ) )
+		{
+			std::cout << "Jump Player" << std::endl;
+		}
 
 		window.clear();
 		window.display();
