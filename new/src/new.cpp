@@ -6,6 +6,16 @@ using namespace std;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
+	sf::Texture texture;
+
+	if (!texture.loadFromFile("src/red.png"))
+	{
+		std::cout << "Error loading red texture ;(" << std::endl;
+	}
+
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
 	while ( window.isOpen( ) )
 	{
 		sf::Event event;
@@ -22,16 +32,11 @@ int main() {
 				}
 			}
 
-		if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
-		{
-			std::cout << "Left mouse button is bing pressed so fire fire fire" << std::endl;
-		}
-
-		std::cout << "x:" << sf::Mouse::getPosition(window).x << " " << "y:" << sf::Mouse::getPosition(window).y << std::endl;
-
-		sf::Mouse::setPosition(sf::Vector2i(40, 50), window);
 
 		window.clear();
+
+		window.draw(sprite);
+
 		window.display();
 		}
 }
