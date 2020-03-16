@@ -22,10 +22,14 @@ int main() {
 				}
 			}
 
-		if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space ) )
+		if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
 		{
-			std::cout << "Jump Player" << std::endl;
+			std::cout << "Left mouse button is bing pressed so fire fire fire" << std::endl;
 		}
+
+		std::cout << "x:" << sf::Mouse::getPosition(window).x << " " << "y:" << sf::Mouse::getPosition(window).y << std::endl;
+
+		sf::Mouse::setPosition(sf::Vector2i(40, 50), window);
 
 		window.clear();
 		window.display();
