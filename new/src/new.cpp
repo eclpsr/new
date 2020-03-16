@@ -7,6 +7,7 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
 	sf::Texture texture;
+	texture.setRepeated(true);
 
 	if (!texture.loadFromFile("src/red.png"))
 	{
@@ -15,10 +16,16 @@ int main() {
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
+	int x = 0;
+
+
+
+
 
 	while ( window.isOpen( ) )
 	{
 		sf::Event event;
+		sprite.setTextureRect(sf::IntRect(0, 0, x, x));
 
 		while ( window.pollEvent( event ) )
 		{
@@ -26,8 +33,13 @@ int main() {
 				{
 				case sf::Event::Closed:
 					window.close();
-
 					break;
+
+				case sf::Event::KeyPressed:
+				std:: cout << "Rect + 10" << std::endl;
+				x+=10;
+				break;
+
 
 				}
 			}
