@@ -20,9 +20,10 @@ int main() {
 	sprite.setScale(0.5f, 0.5f); // размер объекта
 	//sprite.setPosition(sf::Vector2f(300, 200)); // изменить позицию
 	//std::cout << sprite.getPosition().x << std::endl;
-	sprite.move(sf::Vector2f(50, 40)); // двигаем объект
-	sprite.setRotation(45); // ротация объекта
-	std::cout << sprite.getRotation() << std::endl;
+	//sprite.move(sf::Vector2f(50, 40)); // двигаем объект
+	//sprite.setRotation(45); // ротация объекта
+	//std::cout << sprite.getRotation() << std::endl;
+	sprite.rotate(15);
 
 
 
