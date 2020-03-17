@@ -23,8 +23,9 @@ int main() {
 	//sprite.setRotation(45); // ротация объекта
 	//std::cout << sprite.getRotation() << std::endl;
 	//sprite.rotate(15);
-	sprite.setScale(sf::Vector2f(0.7, 0.7)); // Размер объекта
-	std::cout << sprite.getScale().x << std::endl;
+	//sprite.setScale(sf::Vector2f(0.7, 0.7)); // Размер объекта
+	//std::cout << sprite.getScale().x << std::endl;
+	sprite.scale(sf::Vector2f(0.5, 0.5));
 
 
 
