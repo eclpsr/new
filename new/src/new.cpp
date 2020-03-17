@@ -6,6 +6,9 @@ using namespace std;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
+	sf::RectangleShape rectangle(sf::Vector2f(200, 40));
+	rectangle.setSize(sf::Vector2f(400, 67));
+
 	sf::Texture texture;
 	texture.setRepeated(true); // "разрешить повторять объект"
 
@@ -74,6 +77,7 @@ int main() {
 		window.clear();
 
 		window.draw(sprite);
+		window.draw(rectangle);
 
 		window.display();
 		}
