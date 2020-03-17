@@ -7,7 +7,7 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
 	sf::Texture texture;
-	texture.setRepeated(true);
+	texture.setRepeated(true); // "разрешить повторять объект"
 
 	if (!texture.loadFromFile("src/red.png"))
 	{
@@ -16,18 +16,22 @@ int main() {
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
-	//sprite.setColor(sf::Color(255, 0, 0));
-	sprite.setColor(sf::Color(255, 255, 255, 45));
-	int x = 0;
+	sprite.setColor(sf::Color(255, 255, 255, 255));
+	sprite.setScale(0.5f, 0.5f); // размер объекта
 
 
 
 
+	double originX = 0;
+	double originY = 0;
 
 	while ( window.isOpen( ) )
 	{
 		sf::Event event;
-		sprite.setTextureRect(sf::IntRect(0, 0, x, x));
+		//int x = 0;
+		//sprite.setTextureRect(sf::IntRect(0, 0, x, x)); // "видимость объекта"
+
+		sprite.setOrigin(sf::Vector2f(sprite.getTexture()->getSize().x * originX, sprite.getTexture()->getSize().y * originY)); // двигает объект
 
 		while ( window.pollEvent( event ) )
 		{
@@ -38,10 +42,22 @@ int main() {
 					break;
 
 				case sf::Event::KeyPressed:
-				std:: cout << "Rect + 10" << std::endl;
-				x+=10;
+					switch (event.key.code)
+					{
+						case sf::Keyboard::W:
+							originY += 0.05;
+							break;
+						case sf::Keyboard::A:
+							originX += 0.05;
+							break;
+						case sf::Keyboard::S:
+							originY -= 0.05;
+							break;
+						case sf::Keyboard::D:
+							originX -= 0.05;
+							break;
+					}
 				break;
-
 
 				}
 			}
