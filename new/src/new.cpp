@@ -18,9 +18,9 @@ int main() {
 	sprite.setTexture(texture);
 	sprite.setColor(sf::Color(255, 255, 255, 255));
 	sprite.setScale(0.5f, 0.5f); // размер объекта
-	sprite.setPosition(sf::Vector2f(300, 200));
-
-	std::cout << sprite.getPosition().x << std::endl;
+	//sprite.setPosition(sf::Vector2f(300, 200)); // изменить позицию
+	//std::cout << sprite.getPosition().x << std::endl;
+	sprite.move(sf::Vector2f(50, 40)); // двигаем объект
 
 
 
