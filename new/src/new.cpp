@@ -16,6 +16,8 @@ int main() {
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
+	//sprite.setColor(sf::Color(255, 0, 0));
+	sprite.setColor(sf::Color(255, 255, 255, 45));
 	int x = 0;
 
 
