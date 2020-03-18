@@ -6,10 +6,12 @@ using namespace std;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
-	//sf::RectangleShape rectangle(sf::Vector2f(200, 40));
+	//sf::RectangleShape rectangle(sf::Vector2f(200, 40)) // Прямоугольник
 	//rectangle.setSize(sf::Vector2f(400, 67));
-
-	sf::CircleShape circle(150);
+	//sf::CircleShape circle(150); // Круг
+	//sf::CircleShape polygon(300, 3); // Треугольник
+	//sf::CircleShape polygon(300, 4); // Квадрат(Ромб)
+	sf::CircleShape polygon(300, 6); // Шестиугольник
 
 	sf::Texture texture;
 	texture.setRepeated(true); // "разрешить повторять объект"
@@ -37,7 +39,6 @@ int main() {
 
 	double originX = 0;
 	double originY = 0;
-
 	while ( window.isOpen( ) )
 	{
 		sf::Event event;
@@ -46,8 +47,9 @@ int main() {
 
 		sprite.setOrigin(sf::Vector2f(sprite.getTexture()->getSize().x * originX, sprite.getTexture()->getSize().y * originY)); // двигает объект
 
-		while ( window.pollEvent( event ) )
-		{
+
+		while ( window.pollEvent( event ) ) {
+
 				switch (event.type)
 				{
 				case sf::Event::Closed:
@@ -78,7 +80,7 @@ int main() {
 
 		window.clear();
 
-		window.draw(circle);
+		window.draw(polygon);
 
 		window.draw(sprite);
 
