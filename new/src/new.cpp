@@ -24,9 +24,18 @@ int main() {
 	circle.setRadius(200);
 	circle.setPointCount(300);
 	//circle.setFillColor(sf::Color::Cyan);
-	circle.setFillColor(sf::Color(255, 155, 155));
-	circle.setOutlineColor(sf::Color::Blue);
-	circle.setOutlineThickness(-10);
+	//circle.setFillColor(sf::Color(255, 155, 155));
+	//circle.setOutlineColor(sf::Color::Blue);
+	//circle.setOutlineThickness(-10);
+	sf::Texture circletexture;
+	if(!circletexture.loadFromFile("src/paper.jpg"))
+	{
+		std::cout << "ERROR ERROR ERROR" << std::endl;
+	}
+	circle.setTexture(&circletexture);
+	circle.setTextureRect(sf::IntRect(0, 0, 1500, 1500));
+
+
 
 	sf::Texture texture;
 	texture.setRepeated(true); // "разрешить повторять объект"
