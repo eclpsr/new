@@ -12,13 +12,21 @@ int main() {
 	//sf::CircleShape polygon(300, 3); // Треугольник
 	//sf::CircleShape polygon(300, 4); // Квадрат(Ромб)
 	//sf::CircleShape polygon(300, 6); // Шестиугольник
-	sf::RectangleShape line;
+	/*sf::RectangleShape line;
 	line.setSize(sf::Vector2f(200, 3));
 	sf::Vertex line2[] =
 	{
 			sf::Vertex(sf::Vector2f(25, 10)),
 			sf::Vertex(sf::Vector2f(400, 100))
-	};
+	};*/
+
+	sf::CircleShape circle(150);
+	circle.setRadius(200);
+	circle.setPointCount(300);
+	//circle.setFillColor(sf::Color::Cyan);
+	circle.setFillColor(sf::Color(255, 155, 155));
+	circle.setOutlineColor(sf::Color::Blue);
+	circle.setOutlineThickness(-10);
 
 	sf::Texture texture;
 	texture.setRepeated(true); // "разрешить повторять объект"
@@ -87,7 +95,7 @@ int main() {
 
 		window.clear();
 
-		window.draw(line2, 2, sf::Lines);
+		window.draw(circle);
 
 		window.draw(sprite);
 
