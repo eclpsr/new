@@ -5,74 +5,6 @@ using namespace std;
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
-
-	//sf::RectangleShape rectangle(sf::Vector2f(200, 40)) // Прямоугольник
-	//rectangle.setSize(sf::Vector2f(400, 67));
-	//sf::CircleShape circle(150); // Круг
-	//sf::CircleShape polygon(300, 3); // Треугольник
-	//sf::CircleShape polygon(300, 4); // Квадрат(Ромб)
-	//sf::CircleShape polygon(300, 6); // Шестиугольник
-	/*sf::RectangleShape line;
-	line.setSize(sf::Vector2f(200, 3));
-	sf::Vertex line2[] =
-	{
-			sf::Vertex(sf::Vector2f(25, 10)),
-			sf::Vertex(sf::Vector2f(400, 100))
-	};*/
-
-	sf::CircleShape circle(150);
-	circle.setRadius(200);
-	circle.setPointCount(300);
-	//circle.setFillColor(sf::Color::Cyan);
-	//circle.setFillColor(sf::Color(255, 155, 155));
-	//circle.setOutlineColor(sf::Color::Blue);
-	//circle.setOutlineThickness(-10);
-	sf::Texture circletexture;
-	if(!circletexture.loadFromFile("src/paper.jpg"))
-	{
-		std::cout << "ERROR ERROR ERROR" << std::endl;
-	}
-	circle.setTexture(&circletexture);
-	circle.setTextureRect(sf::IntRect(0, 0, 1500, 1500));
-
-	sf::Vertex point;
-	point.position = sf::Vector2f(300, 300);
-	point.color = sf::Color::Red;
-	sf::VertexArray line(sf::Lines, 2);
-
-	line[0].position = sf::Vector2f(200, 150);
-	line[0].color = sf::Color::Red;
-
-//	line[1].position = sf::Vector2f(400, 90);0
-//	line[1].color = sf::Color::Green;
-
-	line[1] = point;
-
-	sf::VertexArray triangle(sf::Triangles, 3);
-	triangle[0].position = sf::Vector2f(20, 50);
-	triangle[0].color = sf::Color::White;
-
-	triangle[1].position = sf::Vector2f(70, 250);
-	triangle[1].color = sf::Color::Red;
-
-	triangle[2].position = sf::Vector2f(10, 250);
-	triangle[2].color = sf::Color::Blue;
-
-	sf::VertexArray quad(sf::Quads, 4);
-
-	quad[0].position = sf::Vector2f(40, 50);
-	quad[0].color = sf::Color::Yellow;
-
-	quad[1].position = sf::Vector2f(80, 50);
-	quad[1].color = sf::Color::Red;
-
-	quad[2].position = sf::Vector2f(90, 200);
-	quad[2].color = sf::Color::Green;
-
-	quad[3].position = sf::Vector2f(10, 150);
-	quad[3].color = sf::Color::Cyan;
-
-
 	sf::Texture texture;
 	texture.setRepeated(true); // "разрешить повторять объект"
 
@@ -84,6 +16,7 @@ int main() {
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
 	sprite.setColor(sf::Color(255, 255, 255, 255));
+	sprite.scale(sf::Vector2f(0.5, 0.5));
 	//sprite.setPosition(sf::Vector2f(300, 200)); // изменить позицию
 	//std::cout << sprite.getPosition().x << std::endl;
 	//sprite.move(sf::Vector2f(50, 40)); // двигаем объект
@@ -92,7 +25,45 @@ int main() {
 	//sprite.rotate(15);
 	//sprite.setScale(sf::Vector2f(0.7, 0.7)); // Размер объекта
 	//std::cout << sprite.getScale().x << std::endl;
-	sprite.scale(sf::Vector2f(0.5, 0.5));
+
+	sf::VertexArray lines(sf::LinesStrip, 3);
+
+	lines[0].position = sf::Vector2f(50, 40);
+	lines[0].color = sf::Color::Red;
+
+	lines[1].position = sf::Vector2f(300, 50);
+	lines[1].color = sf::Color::Magenta;
+
+	lines[2].position = sf::Vector2f(200, 200);
+	lines[2].color = sf::Color::Green;
+
+	sf::VertexArray trianglesStrip(sf::TrianglesStrip, 4);
+
+	trianglesStrip[0].position = sf::Vector2f(30, 50);
+	trianglesStrip[0].color = sf::Color::Red;
+
+	trianglesStrip[1].position = sf::Vector2f(200, 75);
+	trianglesStrip[1].color = sf::Color::Yellow;
+
+	trianglesStrip[2].position = sf::Vector2f(10, 200);
+	trianglesStrip[2].color = sf::Color::Magenta;
+
+	trianglesStrip[3].position = sf::Vector2f(500, 500);
+	trianglesStrip[3].color = sf::Color::Cyan;
+
+	sf::VertexArray trianglesFan(sf::TrianglesFan, 4);
+
+	trianglesFan[0].position = sf::Vector2f(300, 300);
+	trianglesFan[0].color = sf::Color::Red;
+
+	trianglesFan[1].position = sf::Vector2f(300, 50);
+	trianglesFan[1].color = sf::Color::Yellow;
+
+	trianglesFan[2].position = sf::Vector2f(450, 250);
+	trianglesFan[2].color = sf::Color::Magenta;
+
+	trianglesFan[3].position = sf::Vector2f(350, 400);
+	trianglesFan[3].color = sf::Color::Cyan;
 
 
 
@@ -102,8 +73,6 @@ int main() {
 	while ( window.isOpen( ) )
 	{
 		sf::Event event;
-		//int x = 0;
-		//sprite.setTextureRect(sf::IntRect(0, 0, x, x)); // "видимость объекта"
 
 		sprite.setOrigin(sf::Vector2f(sprite.getTexture()->getSize().x * originX, sprite.getTexture()->getSize().y * originY)); // двигает объект
 
@@ -140,13 +109,7 @@ int main() {
 
 		window.clear();
 
-
-
-		window.draw(circle);
-
-		window.draw(triangle);
-
-		window.draw(quad);
+		window.draw(trianglesFan);
 
 		window.draw(sprite);
 
