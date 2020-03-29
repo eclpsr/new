@@ -26,44 +26,23 @@ int main() {
 	//sprite.setScale(sf::Vector2f(0.7, 0.7)); // Размер объекта
 	//std::cout << sprite.getScale().x << std::endl;
 
-	sf::VertexArray lines(sf::LinesStrip, 3);
+	sf::VertexArray quad(sf::Quads, 4);
+	quad[0].position = sf::Vector2f(5, 5);
+	quad[1].position = sf::Vector2f(200, 5);
+	quad[2].position = sf::Vector2f(200, 200);
+	quad[3].position = sf::Vector2f(5, 200);
 
-	lines[0].position = sf::Vector2f(50, 40);
-	lines[0].color = sf::Color::Red;
+	sf::Texture texture1;
+	if(!texture1.loadFromFile("src/texture.jpg"))
+	{
+		std::cout << "ERROR" << std::endl;
+	}
 
-	lines[1].position = sf::Vector2f(300, 50);
-	lines[1].color = sf::Color::Magenta;
+	quad[0].texCoords = sf::Vector2f(0, 0);
+	quad[1].texCoords = sf::Vector2f(50, 0);
+	quad[2].texCoords = sf::Vector2f(50, 100);
+	quad[3].texCoords = sf::Vector2f(0, 100);
 
-	lines[2].position = sf::Vector2f(200, 200);
-	lines[2].color = sf::Color::Green;
-
-	sf::VertexArray trianglesStrip(sf::TrianglesStrip, 4);
-
-	trianglesStrip[0].position = sf::Vector2f(30, 50);
-	trianglesStrip[0].color = sf::Color::Red;
-
-	trianglesStrip[1].position = sf::Vector2f(200, 75);
-	trianglesStrip[1].color = sf::Color::Yellow;
-
-	trianglesStrip[2].position = sf::Vector2f(10, 200);
-	trianglesStrip[2].color = sf::Color::Magenta;
-
-	trianglesStrip[3].position = sf::Vector2f(500, 500);
-	trianglesStrip[3].color = sf::Color::Cyan;
-
-	sf::VertexArray trianglesFan(sf::TrianglesFan, 4);
-
-	trianglesFan[0].position = sf::Vector2f(300, 300);
-	trianglesFan[0].color = sf::Color::Red;
-
-	trianglesFan[1].position = sf::Vector2f(300, 50);
-	trianglesFan[1].color = sf::Color::Yellow;
-
-	trianglesFan[2].position = sf::Vector2f(450, 250);
-	trianglesFan[2].color = sf::Color::Magenta;
-
-	trianglesFan[3].position = sf::Vector2f(350, 400);
-	trianglesFan[3].color = sf::Color::Cyan;
 
 
 
@@ -109,7 +88,7 @@ int main() {
 
 		window.clear();
 
-		window.draw(trianglesFan);
+		window.draw(quad, &texture);
 
 		window.draw(sprite);
 
