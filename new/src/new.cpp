@@ -43,9 +43,13 @@ int main() {
 	quad[2].texCoords = sf::Vector2f(50, 100);
 	quad[3].texCoords = sf::Vector2f(0, 100);
 
+	sf::Transform transform;
 
+	transform.rotate(45, sf::Vector2f(100, 100));
 
-
+	sf::RenderStates states;
+	states.transform = transform;
+	states.texture = &texture1;
 
 	double originX = 0;
 	double originY = 0;
@@ -88,7 +92,7 @@ int main() {
 
 		window.clear();
 
-		window.draw(quad, &texture);
+		window.draw(quad, states);
 
 		window.draw(sprite);
 
