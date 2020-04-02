@@ -16,6 +16,13 @@ int main() {
 
 	view.setCenter(sf::Vector2f(300, 300));
 
+	/*view.rotate(25);
+	view.rotate(25);
+	view.rotate(25);*/
+
+	view.setRotation(25);
+    view.setRotation(25);
+
 	window.setView(view);
 
 	sf::Sprite background;
