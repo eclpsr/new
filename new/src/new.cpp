@@ -10,6 +10,14 @@ int main() {
 
 	window.setView(view);
 
+	/*view.move(sf::Vector2f(50, 100));
+	view.move(sf::Vector2f(50, 100));
+	view.move(sf::Vector2f(50, 100));*/
+
+	view.setCenter(sf::Vector2f(300, 300));
+
+	window.setView(view);
+
 	sf::Sprite background;
 
 	sf::Texture texture;
