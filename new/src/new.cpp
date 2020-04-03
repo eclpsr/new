@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
-	sf::View view(sf::FloatRect(0, 0, 3000, 3000));
+	sf::View view(sf::FloatRect(0, 0, 300, 300));
 
 	window.setView(view);
 
@@ -14,14 +14,18 @@ int main() {
 	view.move(sf::Vector2f(50, 100));
 	view.move(sf::Vector2f(50, 100));*/
 
-	view.setCenter(sf::Vector2f(300, 300));
+	//view.setCenter(sf::Vector2f(300, 300));
 
 	/*view.rotate(25);
 	view.rotate(25);
 	view.rotate(25);*/
 
-	view.setRotation(25);
-    view.setRotation(25);
+	//view.setRotation(25);
+    //view.setRotation(25);
+
+   // view.zoom(2.0);
+
+	view.setSize(sf::Vector2f(1500, 1500));
 
 	window.setView(view);
 
