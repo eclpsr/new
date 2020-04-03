@@ -1,11 +1,23 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
+#include "SFML/Audio.hpp"
 #include <iostream>
 using namespace std;
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
+	sf::SoundBuffer buffer;
+	if (!buffer.loadFromFile("src/sound.wav"))
+	{
+		std::cout << "ERROR" << std::endl;
+	}
+
+	sf::Sound sound2;
+
+	sound2.setBuffer(buffer);
+
+	sound2.play();
 
 
 	/*view.move(sf::Vector2f(50, 100));
