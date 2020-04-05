@@ -14,6 +14,11 @@ int main() {
 			std::cout << "ERROR" << std::endl;
 		}
 	music.play();
+	music.setPlayingOffset(sf::seconds(10));
+
+	//music.stop();
+
+	music.setVolume(15);
 
 	sf::SoundBuffer buffer;
 	if (!buffer.loadFromFile("src/sound.wav"))
