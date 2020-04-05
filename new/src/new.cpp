@@ -7,6 +7,14 @@ using namespace std;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
+	sf::Music music;
+
+	if (!music.openFromFile("src/MainMusic.ogg"))\
+		{
+			std::cout << "ERROR" << std::endl;
+		}
+	music.play();
+
 	sf::SoundBuffer buffer;
 	if (!buffer.loadFromFile("src/sound.wav"))
 	{
