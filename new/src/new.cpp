@@ -7,50 +7,16 @@ using namespace std;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
 
-	sf::Music music;
-
-	if (!music.openFromFile("src/MainMusic.ogg"))\
-		{
-			std::cout << "ERROR" << std::endl;
-		}
-	music.play();
-	music.setPlayingOffset(sf::seconds(10));
-
-	//music.stop();
-
-	music.setVolume(15);
-
-	sf::SoundBuffer buffer;
-	if (!buffer.loadFromFile("src/sound.wav"))
+	if(!sf::SoundBufferRecorder::isAvailable())
 	{
-		std::cout << "ERROR" << std::endl;
+		// error
 	}
 
-	sf::Sound sound2;
+	sf::SoundBufferRecorder recorder;
 
-	sound2.setBuffer(buffer);
+	recorder.start();
 
-	sound2.play();
-
-
-	/*view.move(sf::Vector2f(50, 100));
-	view.move(sf::Vector2f(50, 100));
-	view.move(sf::Vector2f(50, 100));*/
-
-	//view.setCenter(sf::Vector2f(300, 300));
-
-	/*view.rotate(25);
-	view.rotate(25);
-	view.rotate(25);*/
-
-	//view.setRotation(25);
-    //view.setRotation(25);
-
-    // view.zoom(2.0);
-
-	// view.setSize(sf::Vector2f(1500, 1500));
-
-
+	recorder.start();
 	sf::Sprite background;
 
 	sf::Texture texture;
@@ -71,13 +37,11 @@ int main() {
 				switch (event.type)
 				{
 				case sf::Event::Closed:
+					recorder.stop();
+					const sf::SoundBuffer &buffer = recorder.getBuffer();
+
+					buffer.saveToFile("src/recording.ogg");
 					window.close();
-
-					break;
-
-				case sf::Event::Resized:
-					sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
-					window.setView(sf::View(visibleArea));
 
 					break;
 
