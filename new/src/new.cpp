@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr");
+	sf::RenderWindow window(sf::VideoMode(600, 600), "eclpsr", sf::Style::Titlebar | sf::Style::Close);
 
 	if(!sf::SoundBufferRecorder::isAvailable())
 	{
